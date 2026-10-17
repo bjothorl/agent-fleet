@@ -5,9 +5,9 @@ boundaries.
 
 ## Existing shape
 
-The repo is documentation and skills only: `README.md`, `fleet/` artifacts, and
-`.cursor/skills/fleet-*`. There is no code, no package manifest, and no test runner. Python 3.13 is
-available at `/usr/bin/python3`; `pyyaml` is not installed.
+The repo is fleet agents and tooling: `README.md`, `fleet/` artifacts, `.cursor/agents/fleet-*.md`,
+`fleetctl.py`, and `tests/test_fleetctl.py`. Python 3.13 is available at `/usr/bin/python3`;
+`pyyaml` is not installed.
 
 ## Chosen design
 

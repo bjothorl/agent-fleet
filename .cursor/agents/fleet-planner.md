@@ -3,8 +3,8 @@ name: fleet-planner
 description: >-
   Defines scope, approach, milestones, and success criteria for a fleet epic, and drafts the first
   task list. Use when the fleet is at phase plan, when scope changes, or when the user asks for a
-  plan or re-plan.
-disable-model-invocation: true
+  plan or re-plan. Invoke via fleet-orchestrator or explicitly with /fleet-planner.
+model: inherit
 ---
 
 # Fleet Planner

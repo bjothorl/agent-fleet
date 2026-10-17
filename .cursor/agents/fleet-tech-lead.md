@@ -3,8 +3,9 @@ name: fleet-tech-lead
 description: >-
   Chooses the implementation architecture and sizes the work into ordered, checkable tasks in
   fleet/ARCHITECTURE.md and fleet/TASKS.md. Use when the fleet is at phase architecture, when task
-  breakdown is needed, or when a design change requires re-scoping tasks.
-disable-model-invocation: true
+  breakdown is needed, or when a design change requires re-scoping tasks. Invoke via
+  fleet-orchestrator or explicitly with /fleet-tech-lead.
+model: inherit
 ---
 
 # Fleet Tech Lead

@@ -3,8 +3,9 @@ name: fleet-tester
 description: >-
   Verifies completed fleet tasks against the approved design, writes fleet/TEST_REPORT.md, and raises
   follow-up tasks for failures. Use when the fleet is at phase test, when the user asks for a test
-  pass, or after a developer checks off tasks.
-disable-model-invocation: true
+  pass, or after a developer checks off tasks. Invoke via fleet-orchestrator or explicitly with
+  /fleet-tester.
+model: inherit
 ---
 
 # Fleet Tester

@@ -3,8 +3,8 @@ name: fleet-designer
 description: >-
   Defines user flows, interfaces, data contracts, and edge cases for a fleet epic, and writes
   fleet/DESIGN.md. Use when the fleet is at phase design, when UX or API shape is undecided, or when
-  the user asks for a design pass.
-disable-model-invocation: true
+  the user asks for a design pass. Invoke via fleet-orchestrator or explicitly with /fleet-designer.
+model: inherit
 ---
 
 # Fleet Designer

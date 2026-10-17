@@ -1,10 +1,9 @@
 ---
 name: fleet-orchestrator
 description: >-
-  Runs a multi-role agent fleet (planner, designer, tech lead, developer, tester) as a
-  resumable state machine over the fleet/ artifact folder. Use when the user wants to start a
-  long-running coding epic, continue or resume fleet work, check fleet status, or asks which role
-  should act next.
+  Runs a multi-role agent fleet (planner, designer, tech lead, developer, tester) as a resumable
+  state machine over the fleet/ artifact folder. Use when the user wants to start a long-running
+  coding epic, continue or resume fleet work, check fleet status, or asks which role should act next.
 disable-model-invocation: true
 ---
 
@@ -18,7 +17,7 @@ next, enforces approval gates, and keeps `fleet/STATUS.md` current so a run surv
 Every role follows the same rules. Enforce them:
 
 1. Read `fleet/STATUS.md` before anything else.
-2. Read the upstream artifacts named in its own skill before writing.
+2. Read the upstream artifacts named in its own agent prompt before writing.
 3. Write only its own artifact file, plus a `Handoff` section listing inputs consumed and open
    questions.
 4. Update `fleet/STATUS.md`: `phase`, `owner`, `Next action`, `Blockers`, and one `Log` line.
@@ -41,8 +40,11 @@ If `fleet/STATUS.md` is at `phase: intake` and `REQUEST.md` is empty:
 
 Order is `plan` → `design` → `architecture` → `developer` → `test` → `done`.
 
-For the current phase, invoke the matching role skill by name (`fleet-planner`, `fleet-designer`,
-`fleet-tech-lead`, `fleet-developer`, `fleet-tester`). Do not paraphrase the role from memory.
+For the current phase, launch the matching fleet subagent in the **foreground** via the Task tool or
+`/fleet-planner`, `/fleet-designer`, `/fleet-tech-lead`, `/fleet-developer`, `/fleet-tester`. Include
+in the task prompt: paths to `fleet/STATUS.md`, upstream artifacts, gate state from `STATUS.md`, and
+any user constraints from this conversation. Subagents do not see chat history; do not paraphrase the
+role from memory.
 
 After a role returns, read its `Handoff`. If it raised open questions, surface them to the user
 before advancing.
@@ -82,7 +84,8 @@ Use the Task tool only when isolation genuinely helps:
 - `generalPurpose` for a single bounded task, with `TASKS.md` and `ARCHITECTURE.md` pasted into the
   prompt. Subagents cannot see the conversation, so include the full context they need.
 
-Do not delegate planning, design, or approval decisions. Those need the user in the loop.
+Do not delegate planning, design, or approval decisions to background subagents. Those need the user
+in the loop; fleet role agents run in the foreground at gates.
 
 ## Reporting
 

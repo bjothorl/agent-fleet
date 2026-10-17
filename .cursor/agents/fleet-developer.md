@@ -3,8 +3,9 @@ name: fleet-developer
 description: >-
   Implements a single task from fleet/TASKS.md against the approved architecture, checks it off, and
   updates fleet/STATUS.md. Use when the fleet is at phase developer, when the user names a task ID to
-  implement, or when resuming a stalled implementation.
-disable-model-invocation: true
+  implement, or when resuming a stalled implementation. Invoke via fleet-orchestrator or explicitly
+  with /fleet-developer.
+model: inherit
 ---
 
 # Fleet Developer
