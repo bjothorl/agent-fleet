@@ -14,8 +14,10 @@ write code.
 
 ## Before writing
 
-Read `fleet/STATUS.md` and `fleet/REQUEST.md`. If success criteria are missing or the scope is
-ambiguous, ask the user rather than assuming.
+Read the orchestrator brief if provided; otherwise read `fleet/STATUS.md` (top: frontmatter + Next
+action only) and `fleet/REQUEST.md`. If success criteria are missing or the scope is ambiguous, ask
+the user rather than assuming (or record auto-approved assumptions in Handoff when gates are
+auto-approved).
 
 ## Plan contents
 
@@ -35,9 +37,10 @@ have not read.
 ## Gate
 
 Present to the user: the approach, the milestones, and the two decisions worth challenging. Wait for
-approval before the fleet advances. Record approval in `STATUS.md`.
+approval before the fleet advances (or record auto-approval as instructed). Do **not** edit
+`STATUS.md` Next action / Log — the orchestrator does that after you return.
 
 ## Handoff
 
 Append a `Handoff` section to `PLAN.md`: inputs consumed, open questions, and the recommended next
-role.
+role. Keep it under 20 lines.

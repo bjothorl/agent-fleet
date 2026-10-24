@@ -16,8 +16,9 @@ does not choose internal structure, which is the tech lead's job.
 
 ## Before writing
 
-Read `fleet/STATUS.md` and `fleet/PLAN.md`. Design against the approved plan, not around it. If the
-plan conflicts with what you would design, raise it in `Handoff` instead of silently diverging.
+Read the orchestrator brief if provided; otherwise `fleet/STATUS.md` (frontmatter + Next action) and
+`fleet/PLAN.md`. Design against the approved plan. If the plan conflicts with what you would design,
+raise it in `Handoff` instead of silently diverging.
 
 ## Design contents
 
@@ -25,40 +26,32 @@ plan conflicts with what you would design, raise it in `Handoff` instead of sile
 - **Interfaces and contracts**: function signatures, schemas, file formats, or CLI shapes that other
   parts depend on. Be concrete enough that a developer can implement without asking.
 - **Edge cases**: empty input, concurrent use, partial failure, and anything the plan left open.
-- **Visual surfaces**: code rather than description. Write HTML and JS for the components the
-  design names, so the developer implements the same thing you looked at.
+- **Visual surfaces**: code rather than description when the epic has a UI. Write HTML and JS for the
+  components the design names, so the developer implements the same thing you looked at.
 
-## Rendering visuals
+## Rendering visuals (design phase only)
 
-Prefer runnable HTML and JS over an ASCII wireframe. An ASCII sketch is a guess about spacing and
-hierarchy; a rendered page is evidence.
+Prefer runnable HTML and JS over an ASCII wireframe when the epic has a visual surface.
 
-1. Write each surface as a self-contained HTML page with the JS that drives its states, one file per
-   screen or component under `fleet/design/`.
-2. Run it in this session—open the page with the browser tools or a dev server—and **take a
-   screenshot** of each surface.
-3. Read the screenshot back and confirm what it actually shows: layout, spacing, contrast, wrapping,
-   and the states the edge cases describe (empty, error, loading). Exercise the JS so the states are
-   visible, not just the default view. Fix the code, re-run, and re-check until the screenshot matches
-   the intent.
-4. Cite the screenshot paths in `DESIGN.md` next to the surface they prove, and record any decision
-   the render changed.
+1. Write each surface as a self-contained HTML page under `fleet/design/`.
+2. Open it and **take a screenshot** of each critical state.
+3. Read the screenshot back; fix until it matches intent. Cite screenshot paths in `DESIGN.md`.
 
-If the environment cannot render—no browser access, no way to run the page, no network—say so in the
-file and fall back to ASCII, marked as unverified. Do not claim a visual was confirmed when it was not.
+If the environment cannot render, say so and fall back to ASCII marked unverified.
+
+**Do not** re-enter a full screenshot loop for copy tweaks during the developer phase — that is a new
+micro-design task only if the orchestrator launches you again.
 
 ## Skipping the phase
 
 When the epic has no interface surface, write one line saying so and mark the gate `design: n/a` in
-`STATUS.md`. Do not fabricate a design to fill the file.
+the Handoff (orchestrator records it in STATUS).
 
 ## Gate
 
-Present the flows and the contracts the user should confirm, especially anything that becomes hard to
-change later, and show the screenshots for any surface the user will see. Wait for approval before the
-fleet advances.
+Present the flows, contracts, and screenshots (if any). Wait for approval (or record auto-approval).
+Do **not** edit STATUS Next action / Log — the orchestrator does that.
 
 ## Handoff
 
-Append a `Handoff` section to `DESIGN.md`: inputs consumed, open questions, and the recommended next
-role.
+Append a `Handoff` to `DESIGN.md`: inputs consumed, open questions, recommended next role. ≤20 lines.
